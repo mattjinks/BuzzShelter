@@ -37,7 +37,8 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void validate(String username, String password) {
-        if ((username.equals("user")) && (password.equals("pass"))) {
+        RegistrationActivity.UserDomain userDomain = new RegistrationActivity.UserDomain();
+        if (userDomain.validateLogin(username, password)) {
             Intent intent = new Intent(LoginActivity.this, UserAppActivity.class);
             LoginActivity.this.startActivity(intent);
         } else {

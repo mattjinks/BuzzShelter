@@ -26,7 +26,7 @@ public class WelcomeActivity extends AppCompatActivity {
         bRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent registerIntent = new Intent(WelcomeActivity.this, RegistrationActivity.class);
+                Intent registerIntent = new Intent(WelcomeActivity.this, UserTypeActivity.class);
                 WelcomeActivity.this.startActivity(registerIntent);
             }
         });
