@@ -20,7 +20,15 @@
         <activity android:name=".RegistrationActivity" />
         <activity android:name=".UserAppActivity" />
         <activity android:name=".UserTypeActivity" />
-        <activity android:name=".RegistrationAdminActivity"></activity>
+        <activity android:name=".RegistrationAdminActivity" />
+        <activity
+            android:name=".ShelterListView"
+            android:label="@string/title_activity_shelter_list_view"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".ShelterView"
+            android:label="@string/title_activity_shelter_view"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>
