@@ -74,13 +74,20 @@ public class ShelterListView extends AppCompatActivity {
 
         for (int i = 1; i < resultList.size(); i++) {
 
-            shelters.add(new Shelter(resultList.get(i)[1], resultList.get(i)[2], resultList.get(i)[3], resultList.get(i)[4], resultList.get(i)[5], resultList.get(i)[6], resultList.get(i)[7], resultList.get(i)[8]));
+            String first = resultList.get(i)[6];
+            first = first.substring(1);
+            String second = resultList.get(i)[7];
+            String third = resultList.get(i)[8];
+            third = third.substring(0, resultList.get(i)[8].length() - 1);
+            String address = first + second + third;
+
+            shelters.add(new Shelter(resultList.get(i)[1], resultList.get(i)[2], resultList.get(i)[3], resultList.get(i)[4], resultList.get(i)[5], address, resultList.get(i)[7], resultList.get(i)[10]));
 
 
         }
 
 
-        String[] shelterNames = new String[resultList.size()];
+        String[] shelterNames = new String[shelters.size()];
 
         for (int i = 0; i < shelters.size(); i++) {
             shelterNames[i] = shelters.get(i).getName();
