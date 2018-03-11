@@ -20,8 +20,7 @@
         android:id="@+id/bLogout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="64dp"
+        android:layout_marginTop="68dp"
         android:text="LOGOUT"
         app:layout_constraintStart_toStartOf="@+id/tvHome"
         app:layout_constraintTop_toBottomOf="@+id/tvHome" />
@@ -37,8 +36,16 @@
         android:text="View Shelters"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.543"
+        app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/bLogout"
-        app:layout_constraintVertical_bias="0.236" />
+        app:layout_constraintVertical_bias="0.327" />
+
+    <Button
+        android:id="@+id/searchSheltersButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Search Shelters"
+        tools:layout_editor_absoluteX="118dp"
+        tools:layout_editor_absoluteY="397dp" />
 </android.support.constraint.ConstraintLayout>

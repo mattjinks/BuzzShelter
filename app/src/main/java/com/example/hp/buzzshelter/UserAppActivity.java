@@ -15,6 +15,7 @@ public class UserAppActivity extends AppCompatActivity {
         final Button bLogout = (Button) findViewById(R.id.bLogout);
         final Button viewShelters = (Button) findViewById(R.id.viewSheltersButton);
 
+
         bLogout.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Intent welcomeIntent = new Intent(UserAppActivity.this, WelcomeActivity.class);
@@ -28,6 +29,7 @@ public class UserAppActivity extends AppCompatActivity {
                 UserAppActivity.this.startActivity(welcomeIntent);
             }
         });
+        
 
     }
 }
