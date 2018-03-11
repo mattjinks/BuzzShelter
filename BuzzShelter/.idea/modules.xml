@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/BuzzShelter.iml" filepath="$PROJECT_DIR$/BuzzShelter.iml" />
+      <module fileurl="file://C:\Users\Owner\Documents\BuzzShelter\BuzzShelter\BuzzShelter.iml" filepath="C:\Users\Owner\Documents\BuzzShelter\BuzzShelter\BuzzShelter.iml" />
+      <module fileurl="file://C:\Users\HP\Desktop\cs2050\BuzzShelter\BuzzShelter.iml" filepath="C:\Users\HP\Desktop\cs2050\BuzzShelter\BuzzShelter.iml" />
+      <module fileurl="file://C:\Users\HP\Desktop\cs2050\BuzzShelter\app\app.iml" filepath="C:\Users\HP\Desktop\cs2050\BuzzShelter\app\app.iml" />
+      <module fileurl="file://C:\Users\Owner\Documents\BuzzShelter\BuzzShelter\app\app.iml" filepath="C:\Users\Owner\Documents\BuzzShelter\BuzzShelter\app\app.iml" />
+    </modules>
+  </component>
+</project>
