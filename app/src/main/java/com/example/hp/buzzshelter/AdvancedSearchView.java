@@ -31,8 +31,9 @@ public class AdvancedSearchView extends AppCompatActivity {
         });
 
         List<String> genderArray =  new ArrayList<String>();
-        genderArray.add("male");
-        genderArray.add("female");
+        genderArray.add("Choose gender...");
+        genderArray.add("Male");
+        genderArray.add("Female");
 
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(
                 this, android.R.layout.simple_spinner_item, genderArray);
@@ -42,9 +43,10 @@ public class AdvancedSearchView extends AppCompatActivity {
         sItems.setAdapter(adapter);
 
         List<String> ageArray =  new ArrayList<String>();
+        ageArray.add("Choose age range...");
         ageArray.add("Children");
         ageArray.add("Young Adults");
-        ageArray.add("families with newborns");
+        ageArray.add("Families with Newborns");
         ageArray.add("Anyone");
 
         ArrayAdapter<String> stringArrayAdapter = new ArrayAdapter<String>(
