@@ -30,16 +30,29 @@ public class AdvancedSearchView extends AppCompatActivity {
             }
         });
 
-        List<String> spinnerArray =  new ArrayList<String>();
-        spinnerArray.add("male");
-        spinnerArray.add("female");
+        List<String> genderArray =  new ArrayList<String>();
+        genderArray.add("male");
+        genderArray.add("female");
 
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(
-                this, android.R.layout.simple_spinner_item, spinnerArray);
+                this, android.R.layout.simple_spinner_item, genderArray);
 
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         Spinner sItems = (Spinner) findViewById(R.id.genderspinner);
         sItems.setAdapter(adapter);
+
+        List<String> ageArray =  new ArrayList<String>();
+        ageArray.add("Children");
+        ageArray.add("Young Adults");
+        ageArray.add("families with newborns");
+        ageArray.add("Anyone");
+
+        ArrayAdapter<String> stringArrayAdapter = new ArrayAdapter<String>(
+                this, android.R.layout.simple_spinner_item, ageArray);
+
+        stringArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        Spinner spinnerItems = (Spinner) findViewById(R.id.agespinner);
+        spinnerItems.setAdapter(stringArrayAdapter);
     }
 
 }
