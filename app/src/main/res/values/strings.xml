@@ -94,10 +94,4 @@
     <string name="title_activity_shelter_list_view">ShelterListView</string>
     <string name="title_activity_shelter_view">ShelterView</string>
     <string name="title_activity_advanced_search_view">AdvancedSearchView</string>
-    <string-array name="gender">
-        <item>Male</item>
-        <item>Female</item>
-    </string-array>
-    <string name="gender_prompt">Gender</string>
-
 </resources>

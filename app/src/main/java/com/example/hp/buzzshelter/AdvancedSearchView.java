@@ -7,12 +7,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Spinner;
+import android.widget.ArrayAdapter;
+import java.util.ArrayList;
+import java.util.List;
 
 public class AdvancedSearchView extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        Spinner genderspinner = (Spinner) findViewById(R.id.spinner_languages);
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_advanced_search_view);
@@ -27,6 +29,17 @@ public class AdvancedSearchView extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
+
+        List<String> spinnerArray =  new ArrayList<String>();
+        spinnerArray.add("male");
+        spinnerArray.add("female");
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(
+                this, android.R.layout.simple_spinner_item, spinnerArray);
+
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        Spinner sItems = (Spinner) findViewById(R.id.genderspinner);
+        sItems.setAdapter(adapter);
     }
 
 }
