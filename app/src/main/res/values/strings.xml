@@ -93,5 +93,6 @@
     <string name="action_settings">Settings</string>
     <string name="title_activity_shelter_list_view">ShelterListView</string>
     <string name="title_activity_shelter_view">ShelterView</string>
+    <string name="title_activity_advanced_search_view">AdvancedSearchView</string>
 
 </resources>

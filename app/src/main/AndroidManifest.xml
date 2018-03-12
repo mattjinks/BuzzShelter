@@ -28,7 +28,11 @@
         <activity
             android:name=".ShelterView"
             android:label="@string/title_activity_shelter_view"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".AdvancedSearchView"
+            android:label="@string/title_activity_advanced_search_view"
+            android:theme="@style/NoActionBar"></activity>
     </application>
 
 </manifest>
