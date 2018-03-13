@@ -1,5 +1,6 @@
 package com.example.hp.buzzshelter;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -37,6 +38,7 @@ public class ShelterListView extends AppCompatActivity {
     ArrayAdapter adapter;
     String[] shelterNames;
     ListView listView;
+    List<Shelter> shelters = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,50 +56,11 @@ public class ShelterListView extends AppCompatActivity {
             }
         });
 
-
-
-
         InputStream inputStream = getResources().openRawResource(R.raw.homelessshelterdatabase);
 
-        final List<String[]> resultList = new ArrayList<>();
-        BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
-        try {
-            String csvLine;
-            while ((csvLine = reader.readLine()) != null) {
-                String[] row = csvLine.split(",");
-                resultList.add(row);
-            }
-        }
-        catch (IOException ex) {
-            throw new RuntimeException("Error in reading CSV file: "+ex);
-        }
-        finally {
-            try {
-                inputStream.close();
-            }
-            catch (IOException e) {
-                throw new RuntimeException("Error while closing input stream: "+e);
-            }
-        }
+        ShelterList shelterList = new ShelterList(inputStream);
 
-
-        final List<Shelter> shelters = new ArrayList<>();
-
-
-
-        for (int i = 1; i < resultList.size(); i++) {
-
-            String first = resultList.get(i)[6];
-            first = first.substring(1);
-            String second = resultList.get(i)[7];
-            String third = resultList.get(i)[8];
-            third = third.substring(0, resultList.get(i)[8].length() - 1);
-            String address = first + second + third;
-
-            shelters.add(new Shelter(resultList.get(i)[1], resultList.get(i)[2], resultList.get(i)[3], resultList.get(i)[4], resultList.get(i)[5], address, resultList.get(i)[7], resultList.get(i)[10]));
-
-
-        }
+        shelters = shelterList.getShelterList();
 
 
         shelterNames = new String[shelters.size()];

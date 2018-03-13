@@ -8,10 +8,21 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Spinner;
 import android.widget.ArrayAdapter;
+
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
+import com.example.hp.buzzshelter.ShelterListView;
 
 public class AdvancedSearchView extends AppCompatActivity {
+
+
+    InputStream inputStream = getResources().openRawResource(R.raw.homelessshelterdatabase);
+
+    ShelterList shelterList = new ShelterList(inputStream);
+
+    List<Shelter> shelters = shelterList.getShelterList();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
