@@ -19,14 +19,6 @@ public class AdvancedListView extends AppCompatActivity {
     ArrayAdapter adapter;
     ListView listView;
 
-
-
-    InputStream inputStream = getResources().openRawResource(R.raw.homelessshelterdatabase);
-
-    ShelterList shelterList = new ShelterList(inputStream);
-
-    List<Shelter> shelters = shelterList.getShelterList();
-
     List<Shelter> tempGenderList = new ArrayList<>();
 
     List<Shelter> tempAgeList = new ArrayList<>();
@@ -54,14 +46,25 @@ public class AdvancedListView extends AppCompatActivity {
         String genderVal = getIntent().getStringExtra("gender");
         String ageVal = getIntent().getStringExtra("age");
 
+        System.out.println(genderVal);
+        System.out.println(ageVal);
+
+
+
+        InputStream inputStream = getResources().openRawResource(R.raw.homelessshelterdatabase);
+
+        ShelterList shelterList = new ShelterList(inputStream);
+
+        List<Shelter> shelters = shelterList.getShelterList();
+
         for (int i = 0; i < shelters.size(); i++) {
-            if (shelters.get(i).getRestrictions().toLowerCase().contains(genderVal.toLowerCase())) {
+            if (shelters.get(i).getRestrictions().contains(genderVal)) {
                 tempGenderList.add(shelters.get(i));
             }
         }
 
         for (int i = 0; i < tempGenderList.size(); i++) {
-            if (tempGenderList.get(i).getRestrictions().toLowerCase().contains(ageVal.toLowerCase())) {
+            if (tempGenderList.get(i).getRestrictions().contains(ageVal)) {
                 tempAgeList.add(tempGenderList.get(i));
             }
 

@@ -21,7 +21,8 @@ import com.example.hp.buzzshelter.ShelterListView;
 public class AdvancedSearchView extends AppCompatActivity {
 
 
-
+    String agetext;
+    String gendertext;
 
 
     @Override
@@ -52,7 +53,7 @@ public class AdvancedSearchView extends AppCompatActivity {
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         Spinner sItems = (Spinner) findViewById(R.id.genderspinner);
         sItems.setAdapter(adapter);
-        final String gendertext = sItems.getSelectedItem().toString();
+        gendertext = sItems.getSelectedItem().toString();
 
 
         // age spinner
@@ -68,7 +69,7 @@ public class AdvancedSearchView extends AppCompatActivity {
         stringArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         Spinner spinnerItems = (Spinner) findViewById(R.id.agespinner);
         spinnerItems.setAdapter(stringArrayAdapter);
-        final String agetext = spinnerItems.getSelectedItem().toString();
+        agetext = spinnerItems.getSelectedItem().toString();
 
 //        for (int i = 0; i < shelters.size(); i++) {
 //            advancedSearchNames[i] = shelters.get(i).getName();
