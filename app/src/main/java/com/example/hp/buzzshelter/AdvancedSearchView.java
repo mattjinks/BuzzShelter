@@ -1,11 +1,15 @@
 package com.example.hp.buzzshelter;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.Button;
+import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.ArrayAdapter;
 
@@ -23,7 +27,18 @@ public class AdvancedSearchView extends AppCompatActivity {
 
     List<Shelter> shelters = shelterList.getShelterList();
 
+    List<Shelter> tempGenderList = new ArrayList<>();
 
+    List<Shelter> tempAgeList = new ArrayList<>();
+
+    String[] advancedSearchNames;
+
+//    ListView listView;
+
+    public AdvancedSearchView() {
+        this.getAdvancedList();
+        this.getTempAgeList();
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -41,6 +56,7 @@ public class AdvancedSearchView extends AppCompatActivity {
             }
         });
 
+        // gender spinner
         List<String> genderArray =  new ArrayList<String>();
         genderArray.add("Choose gender...");
         genderArray.add("Male");
@@ -52,7 +68,14 @@ public class AdvancedSearchView extends AppCompatActivity {
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         Spinner sItems = (Spinner) findViewById(R.id.genderspinner);
         sItems.setAdapter(adapter);
+        String gendertext = sItems.getSelectedItem().toString();
+        for (int i = 0; i < shelters.size(); i++) {
+            if (gendertext.toLowerCase().contains(shelters.get(i).getRestrictions().toLowerCase())) {
+                tempGenderList.add(shelters.get(i));
+            }
+        }
 
+        // age spinner
         List<String> ageArray =  new ArrayList<String>();
         ageArray.add("Choose age range...");
         ageArray.add("Children");
@@ -66,6 +89,43 @@ public class AdvancedSearchView extends AppCompatActivity {
         stringArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         Spinner spinnerItems = (Spinner) findViewById(R.id.agespinner);
         spinnerItems.setAdapter(stringArrayAdapter);
+        String agetext = spinnerItems.getSelectedItem().toString();
+        for (int i = 0; i < tempGenderList.size(); i++) {
+            if (agetext.toLowerCase().contains(shelters.get(i).getRestrictions().toLowerCase())) {
+                tempAgeList.add(shelters.get(i));
+            }
+        }
+        advancedSearchNames = new String[tempAgeList.size()];
+        for (int i = 0; i < tempAgeList.size(); i++ ) {
+            advancedSearchNames[i] = tempAgeList.get(i).getName();
+        }
+
+//        for (int i = 0; i < shelters.size(); i++) {
+//            advancedSearchNames[i] = shelters.get(i).getName();
+//        }
+//        listView = (ListView) findViewById(R.id.shelterListView);
+//
+//        adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, advancedSearchNames);
+//
+//        listView.setAdapter(adapter);
+
+        Button searchButton = (Button) findViewById(R.id.searchButton);
+
+        searchButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent advancedSearchIntent = new Intent(AdvancedSearchView.this, AdvancedListView.class);
+                AdvancedSearchView.this.startActivity(advancedSearchIntent);
+            }
+        });
+    }
+
+    public String[] getAdvancedList() {
+        return advancedSearchNames;
+    }
+
+    public List<Shelter> getTempAgeList() {
+        return tempAgeList;
     }
 
 }

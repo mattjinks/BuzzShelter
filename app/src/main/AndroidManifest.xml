@@ -32,6 +32,10 @@
         <activity
             android:name=".AdvancedSearchView"
             android:label="@string/title_activity_advanced_search_view"
+            android:theme="@style/NoActionBar" />
+        <activity
+            android:name=".AdvancedListView"
+            android:label="@string/title_activity_advanced_list_view"
             android:theme="@style/NoActionBar"></activity>
     </application>
 

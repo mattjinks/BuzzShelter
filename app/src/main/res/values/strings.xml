@@ -94,5 +94,6 @@
     <string name="title_activity_shelter_list_view">ShelterListView</string>
     <string name="title_activity_shelter_view">ShelterView</string>
     <string name="title_activity_advanced_search_view">AdvancedSearchView</string>
+    <string name="title_activity_advanced_list_view">AdvancedListView</string>
 
 </resources>
