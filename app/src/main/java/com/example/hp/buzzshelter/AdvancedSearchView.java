@@ -23,8 +23,8 @@ public class AdvancedSearchView extends AppCompatActivity {
 
     String agetext;
     String gendertext;
-    Spinner sItems;
-    Spinner spinnerItems;
+    Spinner genderSpinner;
+    Spinner ageSpinner;
 
 
     @Override
@@ -53,47 +53,49 @@ public class AdvancedSearchView extends AppCompatActivity {
                 this, android.R.layout.simple_spinner_item, genderArray);
 
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        sItems = (Spinner) findViewById(R.id.genderspinner);
-        sItems.setAdapter(adapter);
+        genderSpinner = (Spinner) findViewById(R.id.genderspinner);
+        genderSpinner.setAdapter(adapter);
 
 
         // age spinner
         List<String> ageArray =  new ArrayList<String>();
         ageArray.add("Children");
-        ageArray.add("Young Adults");
-        ageArray.add("Families w/ Newborns");
+        ageArray.add("Young adults");
+        ageArray.add("Families w/ newborns");
         ageArray.add("Anyone");
 
         ArrayAdapter<String> stringArrayAdapter = new ArrayAdapter<String>(
                 this, android.R.layout.simple_spinner_item, ageArray);
 
         stringArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinnerItems = (Spinner) findViewById(R.id.agespinner);
-        spinnerItems.setAdapter(stringArrayAdapter);
+        ageSpinner = (Spinner) findViewById(R.id.agespinner);
+        ageSpinner.setAdapter(stringArrayAdapter);
 
-//        for (int i = 0; i < shelters.size(); i++) {
-//            advancedSearchNames[i] = shelters.get(i).getName();
-//        }
-//        listView = (ListView) findViewById(R.id.shelterListView);
-//
-//        adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, advancedSearchNames);
-//
-//        listView.setAdapter(adapter);
+        Button searchGenderButton = (Button) findViewById(R.id.searchGenderButton);
+        Button searchAgeRangeButton = (Button) findViewById(R.id.searchAgeRangeButton);
 
-        Button searchButton = (Button) findViewById(R.id.searchButton);
-
-        searchButton.setOnClickListener(new View.OnClickListener() {
+        searchGenderButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                gendertext = sItems.getSelectedItem().toString();
-                agetext = spinnerItems.getSelectedItem().toString();
+                gendertext = genderSpinner.getSelectedItem().toString();
                 Intent advancedSearchIntent = new Intent(AdvancedSearchView.this, AdvancedListView.class);
-                advancedSearchIntent.putExtra("gender",gendertext);
-                advancedSearchIntent.putExtra("age", agetext);
-
+                advancedSearchIntent.putExtra("criteria", "Gender");
+                advancedSearchIntent.putExtra("gender", gendertext);
                 AdvancedSearchView.this.startActivity(advancedSearchIntent);
             }
         });
+
+        searchAgeRangeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                agetext = ageSpinner.getSelectedItem().toString();
+                Intent advancedSearchIntent = new Intent(AdvancedSearchView.this, AdvancedListView.class);
+                advancedSearchIntent.putExtra("criteria", "Age Range");
+                advancedSearchIntent.putExtra("age range", agetext);
+                AdvancedSearchView.this.startActivity(advancedSearchIntent);
+            }
+        });
+
     }
 
 

@@ -35,8 +35,7 @@ public class ShelterListView extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_shelter_list_view);
-//        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-//        setSupportActionBar(toolbar);
+
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -59,6 +58,7 @@ public class ShelterListView extends AppCompatActivity {
         for (int i = 0; i < shelters.size(); i++) {
             shelterNames[i] = shelters.get(i).getName();
         }
+
         listView = (ListView) findViewById(R.id.shelterListView);
 
         adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, shelterNames);

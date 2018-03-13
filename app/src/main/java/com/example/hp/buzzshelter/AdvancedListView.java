@@ -21,9 +21,8 @@ public class AdvancedListView extends AppCompatActivity {
     ArrayAdapter adapter;
     ListView listView;
 
-    List<Shelter> tempGenderList = new ArrayList<>();
+    List<Shelter> searchList = new ArrayList<>();
 
-    List<Shelter> tempAgeList = new ArrayList<>();
 
     List<Shelter> finalList = new ArrayList<>();
 
@@ -47,13 +46,7 @@ public class AdvancedListView extends AppCompatActivity {
             }
         });
 
-        String genderVal = getIntent().getStringExtra("gender");
-        String ageVal = getIntent().getStringExtra("age");
-
-        System.out.println(genderVal);
-        System.out.println(ageVal);
-
-
+        String criteria = getIntent().getStringExtra("criteria");
 
         InputStream inputStream = getResources().openRawResource(R.raw.homelessshelterdatabase);
 
@@ -61,36 +54,38 @@ public class AdvancedListView extends AppCompatActivity {
 
         List<Shelter> shelters = shelterList.getShelterList();
 
-        for (int i = 0; i < shelters.size(); i++) {
-            if (shelters.get(i).getRestrictions().contains(genderVal)) {
-                tempGenderList.add(shelters.get(i));
-//                System.out.println(shelters.get(i).getName());
+        //for (int i = 0; i < shelters.size(); i++) {
+        //    System.out.println(shelters.get(i).getRestrictions());
+        //}
+
+        if (criteria.equals("Gender")) {
+
+            String genderInput = getIntent().getStringExtra("gender");
+
+            for (int i = 0; i < shelters.size(); i++) {
+                if (shelters.get(i).getRestrictions().contains(genderInput)) {
+                    searchList.add(shelters.get(i));
+                }
             }
-            System.out.println(shelters.get(i).getRestrictions());
-        }
 
-        System.out.println(tempGenderList.size());
-        for (int i = 0; i < shelters.size(); i++) {
-            if (shelters.get(i).getRestrictions().contains(ageVal)) {
-                tempAgeList.add(shelters.get(i));
-                System.out.println(shelters.get(i).getName());
+        } else {
+
+            String ageRangeInput = getIntent().getStringExtra("age range");
+
+            for (int i = 0; i < shelters.size(); i++) {
+                if (shelters.get(i).getRestrictions().contains(ageRangeInput)) {
+                    searchList.add(shelters.get(i));
+                }
             }
 
         }
 
-        System.out.println(tempAgeList.size());
+        advancedSearchNames = new String[searchList.size() + 1];
 
-
-        advancedSearchNames = new String[tempAgeList.size()];
-        for (int i = 0; i < tempAgeList.size(); i++ ) {
-            advancedSearchNames[i] = tempAgeList.get(i).getName();
+        advancedSearchNames[0] = "hi";
+        for (int i = 1; i < advancedSearchNames.length; i++ ) {
+            advancedSearchNames[i] = searchList.get(i - 1).getName();
         }
-
-//        AdvancedSearchView sa = new AdvancedSearchView();
-//
-//        shelters = sa.getTempAgeList();
-//
-//        advancedNames = new String[shelters.size()];
 
         listView = (ListView) findViewById(R.id.advancedListView);
 
@@ -102,7 +97,7 @@ public class AdvancedListView extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
 
-                Intent userIntent = new Intent(AdvancedListView.this, ShelterView.class).putExtra("Shelter", tempAgeList.get(i));
+            Intent userIntent = new Intent(AdvancedListView.this, ShelterView.class).putExtra("Shelter", searchList.get(i + 1));
                 AdvancedListView.this.startActivity(userIntent);
 
             }
