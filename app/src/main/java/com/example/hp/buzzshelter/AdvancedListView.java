@@ -21,6 +21,9 @@ public class AdvancedListView extends AppCompatActivity {
     String[] advancedNames;
     ListView listView;
     List<Shelter> shelters = new ArrayList<>();
+    List<Shelter> tempGenderList = new ArrayList<>();
+    List<Shelter> tempAgeList = new ArrayList<>();
+    String[] advancedSearchNames;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,20 +41,34 @@ public class AdvancedListView extends AppCompatActivity {
             }
         });
 
-
-
-        AdvancedSearchView sa = new AdvancedSearchView();
-
-        shelters = sa.getTempAgeList();
-
-        advancedNames = new String[shelters.size()];
+        String genderVal = getIntent().getStringExtra("gender");
+        String ageVal = getIntent().getStringExtra("age");
 
         for (int i = 0; i < shelters.size(); i++) {
-            advancedNames[i] = shelters.get(i).getName();
+            if (genderVal.toLowerCase().contains(shelters.get(i).getRestrictions().toLowerCase())) {
+                tempGenderList.add(shelters.get(i));
+            }
         }
+
+        for (int i = 0; i < tempGenderList.size(); i++) {
+            if (ageVal.toLowerCase().contains(shelters.get(i).getRestrictions().toLowerCase())) {
+                tempAgeList.add(shelters.get(i));
+            }
+        }
+        advancedSearchNames = new String[tempAgeList.size()];
+        for (int i = 0; i < tempAgeList.size(); i++ ) {
+            advancedSearchNames[i] = tempAgeList.get(i).getName();
+        }
+
+//        AdvancedSearchView sa = new AdvancedSearchView();
+//
+//        shelters = sa.getTempAgeList();
+//
+//        advancedNames = new String[shelters.size()];
+
         listView = (ListView) findViewById(R.id.advancedListView);
 
-        adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, advancedNames);
+        adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, advancedSearchNames);
 
         listView.setAdapter(adapter);
 

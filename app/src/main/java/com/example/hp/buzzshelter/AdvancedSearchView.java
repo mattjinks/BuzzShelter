@@ -68,12 +68,8 @@ public class AdvancedSearchView extends AppCompatActivity {
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         Spinner sItems = (Spinner) findViewById(R.id.genderspinner);
         sItems.setAdapter(adapter);
-        String gendertext = sItems.getSelectedItem().toString();
-        for (int i = 0; i < shelters.size(); i++) {
-            if (gendertext.toLowerCase().contains(shelters.get(i).getRestrictions().toLowerCase())) {
-                tempGenderList.add(shelters.get(i));
-            }
-        }
+        final String gendertext = sItems.getSelectedItem().toString();
+
 
         // age spinner
         List<String> ageArray =  new ArrayList<String>();
@@ -89,16 +85,7 @@ public class AdvancedSearchView extends AppCompatActivity {
         stringArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         Spinner spinnerItems = (Spinner) findViewById(R.id.agespinner);
         spinnerItems.setAdapter(stringArrayAdapter);
-        String agetext = spinnerItems.getSelectedItem().toString();
-        for (int i = 0; i < tempGenderList.size(); i++) {
-            if (agetext.toLowerCase().contains(shelters.get(i).getRestrictions().toLowerCase())) {
-                tempAgeList.add(shelters.get(i));
-            }
-        }
-        advancedSearchNames = new String[tempAgeList.size()];
-        for (int i = 0; i < tempAgeList.size(); i++ ) {
-            advancedSearchNames[i] = tempAgeList.get(i).getName();
-        }
+        final String agetext = spinnerItems.getSelectedItem().toString();
 
 //        for (int i = 0; i < shelters.size(); i++) {
 //            advancedSearchNames[i] = shelters.get(i).getName();
@@ -115,6 +102,9 @@ public class AdvancedSearchView extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent advancedSearchIntent = new Intent(AdvancedSearchView.this, AdvancedListView.class);
+                advancedSearchIntent.putExtra("gender",gendertext);
+                advancedSearchIntent.putExtra("age", agetext);
+
                 AdvancedSearchView.this.startActivity(advancedSearchIntent);
             }
         });
