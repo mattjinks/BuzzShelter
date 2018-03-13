@@ -21,24 +21,9 @@ import com.example.hp.buzzshelter.ShelterListView;
 public class AdvancedSearchView extends AppCompatActivity {
 
 
-    InputStream inputStream = getResources().openRawResource(R.raw.homelessshelterdatabase);
 
-    ShelterList shelterList = new ShelterList(inputStream);
 
-    List<Shelter> shelters = shelterList.getShelterList();
 
-    List<Shelter> tempGenderList = new ArrayList<>();
-
-    List<Shelter> tempAgeList = new ArrayList<>();
-
-    String[] advancedSearchNames;
-
-//    ListView listView;
-
-    public AdvancedSearchView() {
-        this.getAdvancedList();
-        this.getTempAgeList();
-    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -58,9 +43,8 @@ public class AdvancedSearchView extends AppCompatActivity {
 
         // gender spinner
         List<String> genderArray =  new ArrayList<String>();
-        genderArray.add("Choose gender...");
-        genderArray.add("Male");
-        genderArray.add("Female");
+        genderArray.add("Men");
+        genderArray.add("Women");
 
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(
                 this, android.R.layout.simple_spinner_item, genderArray);
@@ -73,10 +57,9 @@ public class AdvancedSearchView extends AppCompatActivity {
 
         // age spinner
         List<String> ageArray =  new ArrayList<String>();
-        ageArray.add("Choose age range...");
         ageArray.add("Children");
         ageArray.add("Young Adults");
-        ageArray.add("Families with Newborns");
+        ageArray.add("Families w/ Newborns");
         ageArray.add("Anyone");
 
         ArrayAdapter<String> stringArrayAdapter = new ArrayAdapter<String>(
@@ -110,12 +93,5 @@ public class AdvancedSearchView extends AppCompatActivity {
         });
     }
 
-    public String[] getAdvancedList() {
-        return advancedSearchNames;
-    }
-
-    public List<Shelter> getTempAgeList() {
-        return tempAgeList;
-    }
 
 }
