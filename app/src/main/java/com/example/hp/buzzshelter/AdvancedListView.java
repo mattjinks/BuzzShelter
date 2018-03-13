@@ -1,11 +1,13 @@
 package com.example.hp.buzzshelter;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
@@ -22,6 +24,8 @@ public class AdvancedListView extends AppCompatActivity {
     List<Shelter> tempGenderList = new ArrayList<>();
 
     List<Shelter> tempAgeList = new ArrayList<>();
+
+    List<Shelter> finalList = new ArrayList<>();
 
     String[] advancedSearchNames;
 
@@ -60,15 +64,22 @@ public class AdvancedListView extends AppCompatActivity {
         for (int i = 0; i < shelters.size(); i++) {
             if (shelters.get(i).getRestrictions().contains(genderVal)) {
                 tempGenderList.add(shelters.get(i));
+//                System.out.println(shelters.get(i).getName());
             }
+            System.out.println(shelters.get(i).getRestrictions());
         }
 
-        for (int i = 0; i < tempGenderList.size(); i++) {
-            if (tempGenderList.get(i).getRestrictions().contains(ageVal)) {
-                tempAgeList.add(tempGenderList.get(i));
+        System.out.println(tempGenderList.size());
+        for (int i = 0; i < shelters.size(); i++) {
+            if (shelters.get(i).getRestrictions().contains(ageVal)) {
+                tempAgeList.add(shelters.get(i));
+                System.out.println(shelters.get(i).getName());
             }
 
         }
+
+        System.out.println(tempAgeList.size());
+
 
         advancedSearchNames = new String[tempAgeList.size()];
         for (int i = 0; i < tempAgeList.size(); i++ ) {
@@ -87,15 +98,15 @@ public class AdvancedListView extends AppCompatActivity {
 
         listView.setAdapter(adapter);
 
-//        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-//            @Override
-//            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-//
-//                Intent userIntent = new Intent(AdvancedListView.this, ShelterView.class).putExtra("Shelter", shelters.get(i));
-//                AdvancedListView.this.startActivity(userIntent);
-//
-//            }
-//        });
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+
+                Intent userIntent = new Intent(AdvancedListView.this, ShelterView.class).putExtra("Shelter", tempAgeList.get(i));
+                AdvancedListView.this.startActivity(userIntent);
+
+            }
+        });
     }
 
 }

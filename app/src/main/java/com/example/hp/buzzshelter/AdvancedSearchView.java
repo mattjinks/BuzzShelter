@@ -23,6 +23,8 @@ public class AdvancedSearchView extends AppCompatActivity {
 
     String agetext;
     String gendertext;
+    Spinner sItems;
+    Spinner spinnerItems;
 
 
     @Override
@@ -51,9 +53,8 @@ public class AdvancedSearchView extends AppCompatActivity {
                 this, android.R.layout.simple_spinner_item, genderArray);
 
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        Spinner sItems = (Spinner) findViewById(R.id.genderspinner);
+        sItems = (Spinner) findViewById(R.id.genderspinner);
         sItems.setAdapter(adapter);
-        gendertext = sItems.getSelectedItem().toString();
 
 
         // age spinner
@@ -67,9 +68,8 @@ public class AdvancedSearchView extends AppCompatActivity {
                 this, android.R.layout.simple_spinner_item, ageArray);
 
         stringArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        Spinner spinnerItems = (Spinner) findViewById(R.id.agespinner);
+        spinnerItems = (Spinner) findViewById(R.id.agespinner);
         spinnerItems.setAdapter(stringArrayAdapter);
-        agetext = spinnerItems.getSelectedItem().toString();
 
 //        for (int i = 0; i < shelters.size(); i++) {
 //            advancedSearchNames[i] = shelters.get(i).getName();
@@ -85,6 +85,8 @@ public class AdvancedSearchView extends AppCompatActivity {
         searchButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                gendertext = sItems.getSelectedItem().toString();
+                agetext = spinnerItems.getSelectedItem().toString();
                 Intent advancedSearchIntent = new Intent(AdvancedSearchView.this, AdvancedListView.class);
                 advancedSearchIntent.putExtra("gender",gendertext);
                 advancedSearchIntent.putExtra("age", agetext);
