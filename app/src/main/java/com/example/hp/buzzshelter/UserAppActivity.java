@@ -14,7 +14,7 @@ public class UserAppActivity extends AppCompatActivity {
         setContentView(R.layout.activity_user_app);
         final Button bLogout = (Button) findViewById(R.id.bLogout);
         final Button viewShelters = (Button) findViewById(R.id.viewSheltersButton);
-        final Button advnacedSearch = (Button) findViewById(R.id.advancedSearchButton);
+        final Button advancedSearch = (Button) findViewById(R.id.advancedSearchButton);
 
         bLogout.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -30,7 +30,7 @@ public class UserAppActivity extends AppCompatActivity {
             }
         });
 
-        advnacedSearch.setOnClickListener(new View.OnClickListener() {
+        advancedSearch.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Intent advancedSearchIntent = new Intent(UserAppActivity.this, AdvancedSearchView.class);
                 UserAppActivity.this.startActivity(advancedSearchIntent);

@@ -10,6 +10,7 @@ public class Shelter implements Serializable {
 
     private String name;
     private String capacity;
+    private String vacancies;
     private String restrictions;
     private String longitude;
     private String latitude;
@@ -22,6 +23,7 @@ public class Shelter implements Serializable {
 
         this.name = name;
         this.capacity = capacity;
+        this.vacancies = capacity;
         this.restrictions = restrictions;
         this.longitude = longitude;
         this.latitude = latitude;
@@ -47,10 +49,15 @@ public class Shelter implements Serializable {
         capacity = newCapacity;
     }
 
-
-    public String getRestrictions () {
-        return restrictions;
+    public String getVacancies () {
+        return vacancies;
     }
+    public void setVacancies (String newVacancies) {
+        this.vacancies = newVacancies;
+    }
+
+
+    public String getRestrictions () {return restrictions;}
     public void setRestrictions (String newRestrictions) {
         restrictions = newRestrictions;
     }
