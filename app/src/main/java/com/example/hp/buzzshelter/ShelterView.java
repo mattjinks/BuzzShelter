@@ -72,7 +72,7 @@ public class ShelterView extends AppCompatActivity {
         numberOfRooms = (EditText) findViewById(R.id.number_of_rooms);
         reserveButton = (Button) findViewById(R.id.reserve_button);
         cancelReservationButton = (Button) findViewById(R.id.cancel_reservation_button);
-
+        int prevNumOfVancancies = 0;
 
 
         reserveButton.setOnClickListener(new View.OnClickListener() {
@@ -81,6 +81,7 @@ public class ShelterView extends AppCompatActivity {
                 int curVacancies = Integer.parseInt(currentShelter.getVacancies());
                 System.out.println(inputRooms);
                 System.out.println(curVacancies);
+                currentShelter.setName("These Nuts");
                 if (curVacancies >= inputRooms) {
                     currentShelter.setVacancies("" + (curVacancies - inputRooms));
                     vacancies.setText("Vacancies: " + currentShelter.getVacancies());
@@ -98,13 +99,15 @@ public class ShelterView extends AppCompatActivity {
             }
         });
 
+
         cancelReservationButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 int currentNumOfReservations = numberOfRooms.getText().toString().equals("") ? 0 : Integer.parseInt(numberOfRooms.getText().toString());
-                int vacancies = Integer.parseInt(currentShelter.getVacancies());
+                int curVacancies = Integer.parseInt(currentShelter.getVacancies());
 
-                if (vacancies < Integer.parseInt(currentShelter.getCapacity())) {
-                    currentShelter.setVacancies("" + vacancies + currentNumOfReservations);
+                if ((curVacancies + currentNumOfReservations) <= Integer.parseInt(currentShelter.getCapacity())) {
+                    currentShelter.setVacancies("" + (curVacancies + currentNumOfReservations));
+                    vacancies.setText("Vacancies: " + currentShelter.getVacancies());
                 }
             }
         });
