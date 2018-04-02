@@ -7,6 +7,7 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.SearchView;
 
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -16,6 +17,9 @@ import android.widget.ArrayAdapter;
 
 import android.widget.ListView;
 
+
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.io.InputStream;
 import java.util.List;
@@ -30,6 +34,7 @@ public class ShelterListView extends AppCompatActivity {
     String[] shelterNames;
     ListView listView;
     List<Shelter> shelters = new ArrayList<>();
+    private HomelessPerson userInstance;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +50,9 @@ public class ShelterListView extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
+        Intent intent = getIntent();
+        userInstance = (HomelessPerson) intent
+                .getSerializableExtra("userInstance");
 
         InputStream inputStream = getResources().openRawResource(R.raw.homelessshelterdatabase);
 
@@ -68,8 +76,9 @@ public class ShelterListView extends AppCompatActivity {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-
                 Intent userIntent = new Intent(ShelterListView.this, ShelterView.class).putExtra("Shelter", shelters.get(i));
+                userIntent.putExtra("hp", userInstance);
+                //Log.d("slv",userInstance.getLoginEmail());
                 ShelterListView.this.startActivity(userIntent);
 
             }
