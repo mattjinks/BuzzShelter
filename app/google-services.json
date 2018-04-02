@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "491695011589",
+    "firebase_url": "https://buzzshelter-7134c.firebaseio.com",
+    "project_id": "buzzshelter-7134c",
+    "storage_bucket": "buzzshelter-7134c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:491695011589:android:0ff19b078c02aaa7",
+        "android_client_info": {
+          "package_name": "com.example.hp.buzzshelter"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "491695011589-oh4ejhb89o4n1ndoiro0u6pb61kqsr42.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.hp.buzzshelter",
+            "certificate_hash": "dad44b65c3f85d58e705819338abab3b2c4f61bd"
+          }
+        },
+        {
+          "client_id": "491695011589-l06q6ok868bkllninas56o59nu6ierm3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDbtTzXezKy9dfEOkN7AIubx3RNgc8ZPPk"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "491695011589-l06q6ok868bkllninas56o59nu6ierm3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
