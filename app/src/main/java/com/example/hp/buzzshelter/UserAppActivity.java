@@ -99,6 +99,7 @@ public class UserAppActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent mapIntent = new Intent(UserAppActivity.this, MapSearchActivity.class);
+                mapIntent.putExtra("hp",userInstance);
                 UserAppActivity.this.startActivity(mapIntent);
             }
         });

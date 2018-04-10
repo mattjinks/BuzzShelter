@@ -55,12 +55,15 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     private FirebaseDatabase mFireBaseDatabase2;
     private DatabaseReference myRef2;
     private Shelter displayShelter;
+    private HomelessPerson userInstance;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
+        userInstance = (HomelessPerson) getIntent()
+                .getSerializableExtra("hp");
         mFireBaseDatabase2 = FirebaseDatabase.getInstance();
         myRef2 = mFireBaseDatabase2.getReference("Shelters");
         setShelters();
@@ -124,6 +127,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
 
         for (int i = 0; i < shelters.size(); i++) {
             if (shelters.get(i).getRestrictions().contains(restrictionInput)) {
+                Log.d(shelters.get(i).getName(),restrictionInput);
                 LatLng shelterLatLong = new LatLng(Double.parseDouble(shelters.get(i).getLatitude()), Double.parseDouble(shelters.get(i).getLongitude()));
                 mMap.addMarker(new MarkerOptions().position(shelterLatLong).title(shelters.get(i).getName())
                         .icon(BitmapDescriptorFactory.defaultMarker
@@ -192,6 +196,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
             @Override
             public void onInfoWindowClick(Marker marker) {
                 Intent userIntent = new Intent(MapsActivity.this, ShelterView.class).putExtra("Shelter", shelter);
+                userIntent.putExtra("hp",userInstance);
                 MapsActivity.this.startActivity(userIntent);
 
 
