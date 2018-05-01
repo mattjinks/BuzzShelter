@@ -176,7 +176,7 @@ public class ShelterView extends AppCompatActivity {
                         Intent intent = new Intent(ShelterView.this, ShelterListView.class);
                         Log.d("userPassedSV", userInstance.getName());
                         intent.putExtra("userInstance", userInstance);
-                        ShelterView.this.startActivity(intent);
+                        ShelterView .this.startActivity(intent);
                     } else {
                         Toast toast = Toast.makeText(getApplicationContext(), "Sorry, there are " + curVacancies + " vacancies at this time.",
                                 Toast.LENGTH_LONG);

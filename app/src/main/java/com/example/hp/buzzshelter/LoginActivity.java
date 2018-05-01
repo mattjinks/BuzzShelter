@@ -2,6 +2,7 @@ package com.example.hp.buzzshelter;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
 import android.provider.SyncStateContract;
 import android.support.annotation.NonNull;
@@ -12,6 +13,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.FrameLayout;
 
 
 import java.util.ArrayList;
@@ -41,6 +43,8 @@ public class LoginActivity extends AppCompatActivity {
     DatabaseReference user;
     String userType;
     private HomelessPerson userInstance;
+//    FrameLayout frameLayout;
+//    AnimationDrawable animationDrawable;
 
 
 
@@ -69,6 +73,12 @@ public class LoginActivity extends AppCompatActivity {
             }
         };*/
         //mFirebaseDatabase = FirebaseDatabase.getInstance();
+//        frameLayout = (FrameLayout)findViewById(R.id.myFrameLay);
+//        animationDrawable = (AnimationDrawable)frameLayout.getBackground();
+//        animationDrawable.setEnterFadeDuration(5000);
+//        animationDrawable.setExitFadeDuration(2000);
+//        animationDrawable.start();
+
         mAuth = FirebaseAuth.getInstance();
         //FirebaseUser user = mAuth.getCurrentUser();
         Log.d("skipping","sateListnere");
